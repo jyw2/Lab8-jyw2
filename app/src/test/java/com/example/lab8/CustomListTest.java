@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class CustomListTest {
     private CustomList mockCityList() {
         CustomList cityList = new CustomList(null, new ArrayList<City>());
-        cityList.add(mockCity());
+        cityList.addCity(mockCity());
         return cityList;
     }
     private City mockCity() {
@@ -33,7 +33,7 @@ public class CustomListTest {
         assertEquals(0,
                 mockCity().compareTo(cityList.getCities().get(0)));
         City city = new City("Charlottetown", "Prince Edward Island");
-        cityList.add(city);
+        cityList.addCity(city);
         assertEquals(0, city.compareTo(cityList.getCities().get(0)));
         assertTrue(cityList.hasCity(city));
     }
