@@ -8,6 +8,14 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class CustomListTest {
+    private CustomList mockCityList() {
+        CustomList cityList = new CustomList(null, new ArrayList<City>());
+        cityList.add(mockCity());
+        return cityList;
+    }
+    private City mockCity() {
+        return new City("Edmonton", "Alberta");
+    }
     private CustomList list;
 
     @Test
@@ -17,6 +25,17 @@ public class CustomListTest {
         list.addCity(new City("Estevan", "SK"));
         assertEquals(list.getCount(),listSize + 1);
 
+    }
+
+    @Test
+    void testHasCities() {
+        CustomList cityList = mockCityList();
+        assertEquals(0,
+                mockCity().compareTo(cityList.getCities().get(0)));
+        City city = new City("Charlottetown", "Prince Edward Island");
+        cityList.add(city);
+        assertEquals(0, city.compareTo(cityList.getCities().get(0)));
+        assertTrue(cityList.hasCity(city));
     }
 
 }
